@@ -24,14 +24,8 @@ $response->getLongitude(); // долгота для исходного запр�
 
 // Список найденных точек
 $collection = $response->getList();
-/*foreach ($collection as $item) {
-    $item->getAddress().'<br>'; // вернет адрес
-    $item->getLatitude().'<br>'; // широта
-    $item->getLongitude(); // долгота
-	$item->getData(); // необработанные данные
-}*/
-
 ?>
+
 <!doctype html>
 <html>
   <head>
@@ -61,9 +55,8 @@ $collection = $response->getList();
             myMap.geoObjects.add(myPlacemark);
         }
     </script>
-	
-  </head>
-  <body>
+</head>
+ <body>
 
     <h2>Адреса на карте</h2>
 
@@ -75,11 +68,11 @@ $collection = $response->getList();
 </form>
 <br>
 
-<?php foreach ($collection as $item) { ?> 
+<?php foreach ($collection as $item) : ?> 
 
     <p><a href ="?point=<?= $item->getLatitude().', '.$item->getLongitude();?>&addr=<?= $item->getAddress();?>" ><?=$item->getAddress();?></a></p>
    
- <?php } ?>
+ <?php endforeach; ?>
  <?php if(isset($_GET['addr'])): ?>
 	<p><?= $_GET['addr']; ?></p>
  <?php endif; ?>
