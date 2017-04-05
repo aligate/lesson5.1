@@ -10,14 +10,12 @@ $api->setQuery($address);
 // Настройка фильтров
 $api
     ->setLimit(5) // кол-во результатов
-    ->setLang(\Yandex\Geo\Api::LANG_US) // локаль ответа
+    ->setLang(\Yandex\Geo\Api::LANG_RU) // локаль ответа
     ->load();
 
 $response = $api->getResponse();
 $response->getFoundCount(); // кол-во найденных адресов
 $response->getQuery(); // исходный запрос
-$response->getLatitude(); // широта для исходного запроса
-$response->getLongitude(); // долгота для исходного запроса
 
 // Список найденных точек
 $collection = $response->getList();
