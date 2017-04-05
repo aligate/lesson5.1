@@ -4,9 +4,6 @@ require '../vendor/autoload.php';
 
 $api = new \Yandex\Geo\Api();
 
-// Можно искать по точке
-$api->setPoint(30.5166187, 50.4452705);
-
 $address = isset($_POST['address']) ? $_POST['address'] : null;
 $api->setQuery($address);
 
